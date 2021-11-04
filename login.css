@@ -61,6 +61,7 @@ a{
     height: 60%;
     background-color: #03497a;
     border: solid 1px black;
+    border-radius:15px ;
 }
 .caixa h1{
     color: #fafafa;

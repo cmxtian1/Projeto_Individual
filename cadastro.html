@@ -11,7 +11,7 @@
     <!-- HEADER -->
     <div class='header'>
         <div class='container'>
-            <a href="file:///C:/Users/jeferson.m.silva/Music/Projeto_Individual/login.html">
+            <a href="file:///C:/Users/jeferson.m.silva/Music/Projeto_Individual/index.html">
                 <h1>LookMuay</h1>
             </a>
         </div>
@@ -23,13 +23,72 @@
            <div class='cad_media'>
                 <h1>Crie sua conta</h1>
                 <div class='box'>
-                    <form action="">
-                        <fieldset>
+                    <form id='formulario' action="">
+                        
+                            <div class='entrada'>
+                                <label class="label_input" for="nome">Nome completo: </label>
+                                <br>
+                                <input id='in_nome' class='input_user' type="text" autofocus>
+                            </div>
                             
-                        </fieldset>
-                    </form>
+                            <div class='entrada'>
+                                <label class="label_input" for="dtNasc">Data de nascimento: </label>
+                                <br>
+                                <input  id='in_dtNasc' type="date">
+                            </div>
+                            
+                            <div class='entrada'>
+                                <label class="label_input" for='grad'>
+                                    Graduação: 
+                                </label>
+                                <br>
+                                <select id="cor_faixa">
+                                    <option value="sem graduação">Sem graduação</option>
+                                    <option value="branco">Branco</option>
+                                    <option value="branco e vermelho">Branco e vermelho</option>
+                                    <option value="vermelho">Vermelho</option>
+                                    <option value="vermelho e azul">Vermelho e azul claro</option>
+                                    <option value="azul claro">Azul claro</option>
+                                    <option value="azul claro e azul escuro">Azul claro e azul escuro</option>
+                                    <option value="azul escuro">Azul escuro</option>
+                                    <option value="azul escuro e preto">Azul escuro e preto</option>
+                                    <option value="preto">Preto</option>
+                                    <option value="preto e branco">Preto e branco</option>
+                                    <option value="preto, branco e vermelho">Preto, branco e vermelho</option>
+                                </select>
+                            </div>
+                            
+                            <div class='entrada'>
+                                <label class="label_input" for="email">Email: </label>
+                                <br>
+                                <input id='in_email' onkeyup="validar()" class='input_user' type="text">
+                            </div>
+                    
+                        
+                            <div class='entrada'>
+                                <label class="label_input" for="senha">Senha: </label>
+                                <br>
+                                <input id='in_senha' class='input_user' type="password">
+                            </div>
+                            
+                            <div class='entrada'>
+                                <label class="label_input" for="tel">Telefone: </label>
+                                <br>
+                                <input id='in_tel' class='input_user' type="tel">
+                            </div>
+                            
+                            <div class='entrada'>
+                                <label class="label_input" for="acad">Academia: </label>
+                                <br>
+                                <input id='in_acad' class='input_user' type="text">
+                            </div>
+
+                                <button onclick='cadastrar()'>
+                                    Cadastrar
+                                </button>
+                            
+                    </div>
                 </div>
-           </div>
         </div>
     </div>
 
@@ -39,3 +98,28 @@
     </div>
 </body>
 </html>
+<script>
+    function cadastrar(){
+        var nome = in_nome.value;
+        var dtnasc = in_dtNasc.value;
+        var email = in_email.value;
+        var senha = in_senha.value;
+        var tel = in_tel.value;
+        var acad = in_acad.value;
+
+        if(nome == '' || dtnasc == '' || email == '' || senha == '' || tel == '' ){
+            alert("Preencha todos os campos")
+        }
+
+    }
+    
+    function validar(){
+        var email = in_email.value;
+        if(email.indexOf("@") > -1 && email.indexOf(".com") > -1){
+            in_email.style.color = 'green'
+        } else{
+            in_email.style.color = 'red'
+
+        }
+    }
+</script>

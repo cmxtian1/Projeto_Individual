@@ -42,7 +42,7 @@ a{
     align-items: center;
 }
 .cad_media{
-    width: 75%;
+    width: 50%;
     height: 90%;
     background-color: #03497a;
     color: #fafafa;
@@ -51,6 +51,7 @@ a{
     justify-content: center;
     align-items: center;
     border: 1px solid black;
+    border-radius: 15px;
 }
 .cad_media u{
     color: #fafafa;

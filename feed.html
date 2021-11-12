@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LookMuay</title>
+    <link rel="stylesheet" href="feed.css">
+</head>
+<body>
+        <!-- HEADER -->
+        <div class='header'>
+            <div class='container'>
+                <a href="index.html">
+                    <h1>LookMuay</h1>
+                </a>
+            </div>
+        </div>
+
+        <!-- FEED -->
+            <div class='postagem'>
+                <textarea id="publi" cols="30" rows="10"> Crie uma publicação</textarea>
+                <button onclick='post()'>
+                    Publicar
+                </button>
+            </div>
+            <div id='feed'>
+                
+            </div>
+        </div>
+</body>
+</html>
+<script>
+    function post(){
+        var texto = publi.value;
+        feed.innerHTML += `
+        <div class='newpost'>
+        <b>Cristhian Mendes da silva</b>
+         <br>
+         
+            ${texto}
+            <br>
+            <button id='div_btn' onclick='aumentar()'>
+                👍 Curtir (<span id='contar'>0</span>)
+            </button>
+        </div>
+        `
+    }
+    function aumentar(){
+       contar.innerHTML = 1; 
+    }
+</script>

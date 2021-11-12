@@ -11,7 +11,7 @@
     <!-- HEADER -->
     <div class='header'>
         <div class='container'>
-            <a href="file:///C:/Users/jeferson.m.silva/Music/Projeto_Individual/login.html">
+            <a href="index.html">
                 <h1>LookMuay</h1>
             </a>
         </div>
@@ -20,26 +20,26 @@
     <!-- LOGIN -->
     <div class='login'>
         <div class='container'>
-            <div class='logo'>
+            <div  class='logo'>
                 <img src="./img/muay.png" alt="Silhueta de muay thai">
             </div>
             <div class='entrada'>
                 <div class='caixa'>
                     <h1>Login</h1>
                     <div class='formulario'>
-                        <form>
-                            <input type="text" id="in_login" placeholder="Usuário" autofocus>
+                        <form id='form_login' name='form_login'>
+                            <input type="text" name='login' id="in_login" placeholder="Usuário" autofocus>
                             <br>
-                            <input type="password" id="in_senha" placeholder="Senha">
+                            <input type="password" name='senha' id="in_senha" placeholder="Senha">
                         </form>
-                        <button id='btn'>
+                        <button onclick='entrar()' id='btn'>
                             Entrar
                         </button>
                     </div>
                     <div class='create_account'>
                         Ainda não tem uma conta? 
                         <br>
-                        <a href="file:///C:/Users/jeferson.m.silva/Music/Projeto_Individual/cadastro.html">
+                        <a href="cadastro.html">
                             <u>CADASTRE-SE</u>
                         </a>
                     </div>
@@ -48,9 +48,78 @@
         </div>
     </div>
 
+
+
     <!-- FOOTER -->
     <div class='footer'>
         <h3>Developed by Cristhian &copy;2021</h3>
     </div>
 </body>
 </html>
+
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_login").reset();
+    }
+
+    function entrar() {
+        aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+
+        var email = formulario.get("login");
+        var senha = formulario.get("senha");
+
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
+
+        if (email == "" || senha == "") {
+            window.alert("Preencha todos os campos para prosseguir!");
+            finalizarAguardar();
+            return false;
+        }
+
+        if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            finalizarAguardar();
+            return false;
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

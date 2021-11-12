@@ -11,7 +11,7 @@
     <!-- HEADER -->
     <div class='header'>
         <div class='container'>
-            <a href="file:///C:/Users/jeferson.m.silva/Music/Projeto_Individual/index.html">
+            <a href="index.html">
                 <h1>LookMuay</h1>
             </a>
         </div>
@@ -23,18 +23,18 @@
            <div class='cad_media'>
                 <h1>Crie sua conta</h1>
                 <div class='box'>
-                    <form id='formulario' action="">
+                    <form id='form_cadastro' >
                         
                             <div class='entrada'>
                                 <label class="label_input" for="nome">Nome completo: </label>
                                 <br>
-                                <input id='in_nome' class='input_user' type="text" autofocus>
+                                <input id='in_nome' name='nome' class='input_user' type="text" autofocus>
                             </div>
                             
                             <div class='entrada'>
                                 <label class="label_input" for="dtNasc">Data de nascimento: </label>
                                 <br>
-                                <input  id='in_dtNasc' type="date">
+                                <input  id='in_dtNasc' name='dtnasc' type="date">
                             </div>
                             
                             <div class='entrada'>
@@ -42,7 +42,7 @@
                                     Graduação: 
                                 </label>
                                 <br>
-                                <select id="cor_faixa">
+                                <select name='graduacao' id="cor_faixa">
                                     <option value="sem graduação">Sem graduação</option>
                                     <option value="branco">Branco</option>
                                     <option value="branco e vermelho">Branco e vermelho</option>
@@ -61,26 +61,26 @@
                             <div class='entrada'>
                                 <label class="label_input" for="email">Email: </label>
                                 <br>
-                                <input id='in_email' onkeyup="validar()" class='input_user' type="text">
+                                <input id='in_email' name='email' onkeyup="validar()" class='input_user' type="text">
                             </div>
                     
                         
                             <div class='entrada'>
                                 <label class="label_input" for="senha">Senha: </label>
                                 <br>
-                                <input id='in_senha' class='input_user' type="password">
+                                <input id='in_senha' name='senha' class='input_user' type="password">
                             </div>
                             
                             <div class='entrada'>
                                 <label class="label_input" for="tel">Telefone: </label>
                                 <br>
-                                <input id='in_tel' class='input_user' type="tel">
+                                <input id='in_tel' name='telefone' class='input_user' type="tel">
                             </div>
                             
                             <div class='entrada'>
                                 <label class="label_input" for="acad">Academia: </label>
                                 <br>
-                                <input id='in_acad' class='input_user' type="text">
+                                <input id='in_acad' name='academia' class='input_user' type="text">
                             </div>
 
                                 <button onclick='cadastrar()'>
@@ -98,7 +98,12 @@
     </div>
 </body>
 </html>
+
 <script>
+        function limparFormulario() {
+        document.getElementById("form_cadastro").reset();
+    }
+
     function cadastrar(){
         var nome = in_nome.value;
         var dtnasc = in_dtNasc.value;
@@ -106,10 +111,34 @@
         var senha = in_senha.value;
         var tel = in_tel.value;
         var acad = in_acad.value;
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_cadastro")));   
+
 
         if(nome == '' || dtnasc == '' || email == '' || senha == '' || tel == '' ){
             alert("Preencha todos os campos")
         }
+
+        fetch("C:\Users\jeferson.m.silva\Music\Banco de dados\script_PI", {
+            method: "POST",
+            body: formulario
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "index.html";
+                limparFormulario();
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
 
     }
     
@@ -119,7 +148,6 @@
             in_email.style.color = 'green'
         } else{
             in_email.style.color = 'red'
-
         }
     }
 </script>

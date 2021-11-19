@@ -29,12 +29,15 @@ a{
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: black;
 }
-.cadastro{
+.box{
     height: 800px;
     display: flex;
     justify-content: center;
 }
-.cadastro .container{
+.box h1{
+    margin-top: 35px;
+}
+.box .container{
     height: 100%;
     width: 90%;
     display: flex;
@@ -48,13 +51,17 @@ a{
     color: #fafafa;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     border: 1px solid black;
     border-radius: 15px;
 }
-.cad_media u{
-    color: #fafafa;
+.content{
+    font-size: 20px;
+}
+.content p{
+    padding: 30px;
+    line-height: 29px;
+    text-align: justify;
 }
 .footer{
     width: 100%;

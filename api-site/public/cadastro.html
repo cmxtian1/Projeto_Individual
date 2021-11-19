@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="icon" href="./img/logo_pi.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class='header'>
+        <div class='container'>
+            <a href="index.html">
+                <h1>LookMuay</h1>
+            </a>
+            <a href="quem_somos.html">
+                <h3>O que é a LookMuay?</h3>
+            </a>
+        </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div class='cadastro'>
+        <div class='container'>
+            <div class='cad_media'>
+                <h1>Crie sua conta</h1>
+                <div class='box'>
+                    <div id='form_cadastro'>
+
+                        <div class='entrada'>
+                            <label class="label_input" for="nome">Nome completo: </label>
+                            <br>
+                            <input id='in_nome' name='nome' placeholder="Laura Santos" class='input_user' type="text" autofocus>
+                        </div>
+
+                        <div class='entrada'>
+                            <label class="label_input" for="dtNasc">Data de nascimento: </label>
+                            <br>
+                            <input id='in_dtNasc' name='dtnasc' type="date">
+                        </div>
+
+                        <div class='entrada'>
+                            <label class="label_input" for='grad'>
+                                Graduação:
+                            </label>
+                            <br>
+                            <select name='graduacao' id="cor_faixa">
+                                <option value="sem graduação">Sem graduação</option>
+                                <option value="branco">Branco</option>
+                                <option value="branco e vermelho">Branco e vermelho</option>
+                                <option value="vermelho">Vermelho</option>
+                                <option value="vermelho e azul">Vermelho e azul claro</option>
+                                <option value="azul claro">Azul claro</option>
+                                <option value="azul claro e azul escuro">Azul claro e azul escuro</option>
+                                <option value="azul escuro">Azul escuro</option>
+                                <option value="azul escuro e preto">Azul escuro e preto</option>
+                                <option value="preto">Preto</option>
+                                <option value="preto e branco">Preto e branco</option>
+                                <option value="preto, branco e vermelho">Preto, branco e vermelho</option>
+                            </select>
+                        </div>
+
+                        <div class='entrada'>
+                            <label class="label_input" for="email">Email: </label>
+                            <br>
+                            <input id='in_email' placeholder="Laura@gmail.com" name='email' class='input_user' type="text">
+                        </div>
+
+
+                        <div class='entrada'>
+                            <label class="label_input" for="senha">Senha: </label>
+                            <br>
+                            <input id='in_senha' placeholder="********" name='senha' class='input_user' type="password">
+                        </div>
+
+                        <div class='entrada'>
+                            <label class="label_input" for="tel">Telefone: </label>
+                            <br>
+                            <input id='in_tel' placeholder="(11) 93872-1193" name='telefone' class='input_user' type="tel">
+                        </div>
+
+                        <div class='entrada'>
+                            <label class="label_input" for="acad">Academia: </label>
+                            <br>
+                            <select id='in_academia' name='academia' >
+                                <option value="null">Sem academia</option>
+                                <option value="1">Inova</option>
+                                <option value="2">Tiger Thai</option>
+                                <option value="3">Team Nogueira</option>
+                                <option value="4">Nocaute</option>
+                                <option value="5">Thai Fighters</option>
+                                <option value="6">Thai Combat</option>
+                                <option value="7">Thai Brasil</option>
+                                <option value="null">Outra academia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick='cadastrar()'>
+                        Cadastrar
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class='footer'>
+        <h3>Developed by Cristhian &copy;2021</h3>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+
+    function cadastrar() {
+
+        var nome = in_nome.value;
+        var dtnasc = in_dtNasc.value;
+        var email = in_email.value;
+        var graduacao = cor_faixa.value;
+        var senha = in_senha.value;
+        var tel = in_tel.value;
+        var academia = in_academia.value;
+
+
+        if (nome == '' || dtnasc == '' || email == '' || senha == '' || tel == '' || academia == '') {
+            alert("Preencha todos os campos")
+        }
+        if(nome == ''){
+            console.log('Preencha o campo Nome')
+            in_nome.style.borderColor = 'red'
+        }
+         if(dtnasc == ''){
+            console.log('Preencha o campo Data de nascimento')
+            in_dtNasc.style.borderColor = 'red'
+        }
+         if(email==''){
+            console.log('Preencha o campo Email')
+            in_email.style.borderColor = 'red'
+        }
+         if(senha ==''){
+            console.log('Preencha o campo Senha')
+            in_senha.style.borderColor = 'red'
+        }
+         if( tel ==''){
+            console.log('Preencha o campo Telefone')
+            in_tel.style.borderColor = 'red'
+        }
+         if(academia == ''){
+            console.log('Preencha o campo Academia')
+            in_academia.style.borderColor = 'red'
+        }
+        if (email.indexOf('@') && email.indexOf('.com') < 0){
+            console.log('Email inválido, verifique novamente!')
+            in_academia.style.borderColor = 'red'
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome: nome,
+                dtnasc: dtnasc,
+                graduacao: graduacao,
+                email: email,
+                senha: senha,
+                telefone: tel,
+                academia: academia,
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Cadastro realizado com sucesso!");
+                window.location = "index.html";
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+
+
+</script>

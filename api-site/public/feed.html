@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/feed.css">
     <link rel="icon" href="./img/logo_pi.png">
 </head>
-<body>
+<body onload="validarSessao(), atualizarFeed()">
         <!-- HEADER -->
         <div class='header'>
             <div class='container'>
@@ -40,10 +40,14 @@
 
         <!-- FEED -->
             <div class='postagem'>
-                <textarea id="publi" cols="30" rows="10"> Crie uma publicação</textarea>
-                <button onclick='post()'>
-                    Publicar
-                </button>
+                <form id='form_postagem' method="post" onsubmit="return publicar()">
+
+                    <textarea id="publi" name="descricao" placeholder=" Crie uma publicação" maxlength="300" rows="10"></textarea>
+
+                    <button>
+                        Publicar
+                    </button>
+                </form>
             </div>
             <div id='feed'>
                 
@@ -51,7 +55,7 @@
         </div>
 </body>
 </html>
-<script>
+<!--<script>
     function post(){
         var texto = publi.value;
         
@@ -71,4 +75,121 @@
     function aumentar(){
        contar.innerHTML = 1; 
     }
+</script>-->
+
+<script>
+
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            descricao: form_postagem.descricao.value
+        }
+
+        fetch(`/postagem/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "feed.html";
+                limparFormulario();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+
+    }
+
+    function editar(idAviso) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
+        console.log("cliquei em editar - " + idAviso);
+        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
+        window.location = "/dashboard/edicao-aviso.html"
+
+    }
+
+    function deletar(idAviso) {
+        console.log("Criar função de apagar post escolhido - ID" + idAviso);
+
+    }
+
+    function atualizarFeed() {
+        fetch("/postagem/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");       
+
+
+                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        
+
+                        divPublicacao.className = "publicacao";
+                        spanNome.className = "publicacao-nome";
+                        divDescricao.className = "publicacao-descricao";
+
+
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(divDescricao);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            
+        });
+    }
+
+    function testar() {
+        
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+        var divResultado = document.getElementById("div_feed");
+
+        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+        divResultado.innerHTML = formulario.get("descricao");
+
+       
+
+        return false;
+    }
+
 </script>

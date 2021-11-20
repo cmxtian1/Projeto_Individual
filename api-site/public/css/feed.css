@@ -43,7 +43,6 @@ a{
 .postagem{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 .postagem button{
     border: none;
@@ -55,9 +54,14 @@ a{
     font-weight: 600;
     margin-left: 20px;
 }
+#form_postagem{
+    display: flex;
+    align-items: center;
+}
 .postagem textarea{
     margin-top: 20px;
-    width: 35%;
+    width: 680px;
+    height: 181px;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -67,7 +71,7 @@ a{
     align-items: center;
     justify-content: center;
 }
-.newpost{
+.publicacao{
     margin-top: 30px;
     width: 40%;
     background-color: #fafafab2;

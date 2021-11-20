@@ -5,15 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprenda sozinho</title>
-    <link rel="stylesheet" href="aprender.css">
+    <link rel="stylesheet" href="./css/aprender.css">
     <link rel="icon" href="./img/logo_pi.png">
 </head>
 <body>
     <!-- HEADER -->
     <div class='header'>
         <div class='container'>
-            <a href="file:///C:/Users/jeferson.m.silva/Music/Projeto_Individual/index.html">
+            <a href="feed.html">
                 <h1>LookMuay</h1>
+                <ul class='navbar'>
+                    <li>
+                        <a href="">Academia</a>
+                    </li>
+                    |
+                    <li>
+                        <a href="./feed.html">Feed</a>
+                    </li>
+                    |
+                    <li>
+                        <a href="./aprender.html">Golpes</a>
+                    </li>
+                    |
+                    <li>
+                        <a href="">Sair</a>
+                    </li>
+                </ul>
             </a>
         </div>
     </div>
@@ -21,15 +38,23 @@
     <div class='corpo'>
         <h1>Aprenda os golpes</h1>
         <h2>Quer aprender Muay Thai e ainda não sabe como começar? Clique no nome de um golpe e veja como executa-lo!</h2>
-        <div id='container' class='container'>
-            <h2 onclick="joelhada1()">Khao Trong (Joelhada)</h2>
-            <h2 onclick="joelhada2()">Khao (Joelhada no ar)</h2>
-            <h2 onclick="soco()">Mahd (Soco)</h2>
-            <h2 onclick="chute_frontal()">Teep Trong (Chute Frontal)</h2>
-            <h2 onclick="cotovelada1()">Sok Tad (Cotovelada Horizontal)</h2>
-            <h2 onclick="cotovelada2()">Sok Sob (Cotovelada Vertical)</h2>
-            <h2 onclick="chute1()">Tee Trong (Chute Alto)</h2>
-            <h2 onclick="chute2()">Tee Tad (Chute Médio)</h2>
+        <div class='conteúdo'>
+            <div id='gif1'>
+                
+            </div>
+            <div id='container' class='container'>
+                <h2 onclick="joelhada1()">Khao Trong (Joelhada)</h2>
+                <h2 onclick="joelhada2()">Khao (Joelhada no ar)</h2>
+                <h2 onclick="soco()">Mahd (Soco)</h2>
+                <h2 onclick="chute_frontal()">Teep Trong (Chute Frontal)</h2>
+                <h2 onclick="cotovelada1()">Sok Tad (Cotovelada Horizontal)</h2>
+                <h2 onclick="cotovelada2()">Sok Sob (Cotovelada Vertical)</h2>
+                <h2 onclick="chute1()">Tee Trong (Chute Alto)</h2>
+                <h2 onclick="chute2()">Tee Tad (Chute Médio)</h2>
+            </div>
+            <div id='gif2'>
+                
+            </div>
         </div>
     </div>
 </body>
@@ -37,49 +62,49 @@
 <script>
     function joelhada1(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/khaotrong.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function joelhada2(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/khaokatrote.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function soco(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/mahd.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function chute_frontal(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/teeptrong.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function cotovelada1(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/sokTad.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function cotovelada2(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/sokSob.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function chute1(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/teeTrong.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 
     function chute2(){
         var golpe = '<video id="teste" height="550px" controls><source src="./video/teeTad.mp4" type="video/mp4"></video>';
-        container.innerHTML = `<a href=''><h2>⬅️ Voltar</h2></a>`;
+        container.innerHTML = `<a href=''><h2>Voltar</h2></a>`;
         container.innerHTML += golpe;
     }
 

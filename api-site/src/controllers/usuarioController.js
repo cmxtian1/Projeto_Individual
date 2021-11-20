@@ -25,7 +25,7 @@ function listar(req, res) {
 }
 
 function entrar(req, res) {
-    var email = req.body.login; 
+    var email = req.body.email; 
     var senha = req.body.senha;
 
     if (email == undefined) {
@@ -84,6 +84,9 @@ function cadastrar(req, res) {
     }
     
     else {
+
+        
+
         usuarioModel.cadastrar(nome,dtnasc, graduacao,email, senha, tel, academia)
             .then(
                 function (resultado) {

@@ -5,15 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LookMuay</title>
-    <link rel="stylesheet" href="feed.css">
+    <link rel="stylesheet" href="./css/feed.css">
     <link rel="icon" href="./img/logo_pi.png">
 </head>
 <body>
         <!-- HEADER -->
         <div class='header'>
             <div class='container'>
-                <a href="index.html">
+                <a href="feed.html">
                     <h1>LookMuay</h1>
+                    <ul class='navbar'>
+                        <li>
+                            <a href="">Academia</a>
+                        </li>
+                        |
+                        <li>
+                            <a href="./feed.html">Feed</a>
+                        </li>
+                        |
+                        <li>
+                            <a href="./aprender.html">Golpes</a>
+                        </li>
+                        |
+                        <li>
+                            <a href="">Sair</a>
+                        </li>
+                    </ul>
                 </a>
             </div>
         </div>
@@ -34,9 +51,10 @@
 <script>
     function post(){
         var texto = publi.value;
+        
         feed.innerHTML += `
         <div class='newpost'>
-        <b>Cristhian Mendes da silva</b>
+        <b>Cristhian Mendes da Silva</b>
          <br>
          
             ${texto}

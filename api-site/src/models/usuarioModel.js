@@ -27,9 +27,16 @@ function cadastrar(nome, dtnasc, graduacao, email, senha, telefone, academia) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function post(nome){
+    var instrucao = `
+    select nome from atleta where idatleta = 3 ;
+    `
+    return database.executar(instrucao);
+}
 
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    post,
 };

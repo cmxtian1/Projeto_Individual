@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e3e5e2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #fafafa;
+}
+.header{
+    height: 100px;
+    background-color: #ad131f;
+    display: flex;
+    justify-content: center;
+    border-bottom: #eda43d 3px solid;
+}
+.header .container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header h1{
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    color: #fafafa;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+.navbar{
+   color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 600px;
+    list-style: none;
+    font-weight: 600;
+}
+
+.corpo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.corpo h1{
+    background-color: #03497a;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fafafa;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+.corpo .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    width: 56%;
+}
+.container h2{
+    background-color: #03497a;
+    color: #fafafa;
+    padding: 7px;
+    border-radius: 17px;
+}
+.conteúdo{
+    width: 80%;
+}
+#gif1{
+    height: 490px;
+    width: 22%;
+    float: left;
+    background-image: url('https://www.fightersgeneration.com/np5/char/ssf2hd/ryu-hdstance.gif');
+    background-repeat: no-repeat;
+}
+#gif2{
+    height: 490px;
+    width: 22%;
+    float: right;
+    background-image: url('https://www.fightersgeneration.com/np5/char/ssf2hd/ryu-hdstance.gif');
+    background-repeat: no-repeat;
+}
+.container video{
+    border: 1px black solid;
+    box-shadow: -5px 6px 4px 1px rgba(0,0,0,0.2);
+}
+
+/*
+#gif2{
+    height: 490px;
+    width: 38%;
+    background-image: url('https://i.pinimg.com/originals/09/53/9e/09539ec151a3ce45895a2dbc1ac1dfb1.gif');
+    background-repeat: no-repeat;
+}
+*/

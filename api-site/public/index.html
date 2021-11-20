@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="./css/login.css">
     <link rel="icon" href="./img/logo_pi.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -74,10 +74,8 @@
     function entrar() {
         
 
-        var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
-
-        var email = formulario.get("login");
-        var senha = formulario.get("senha");
+        var email = in_login.value;
+        var senha = in_senha.value;
 
         console.log("FORM LOGIN: ", email);
         console.log("FORM SENHA: ", senha);
@@ -94,7 +92,13 @@
 
         fetch("/usuarios/autenticar", {
             method: "POST",
-            body: formulario
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: senha,
+            })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
@@ -111,6 +115,7 @@
 
                 });
 
+                window.location = "/feed.html"
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");

@@ -19,7 +19,7 @@ a{
     height: 100%;
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;
 }
 .header h1{
     margin: 0;
@@ -29,39 +29,46 @@ a{
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: black;
 }
-.box{
-    height: 800px;
-    display: flex;
-    justify-content: center;
-}
-.box h1{
-    margin-top: 35px;
-}
-.box .container{
-    height: 100%;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.cad_media{
-    width: 50%;
-    height: 90%;
-    background-color: #03497a;
+.header h3{
+    margin: 0;
+    padding: 0;
     color: #fafafa;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+.corpo{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    height: 82.6vh;
+}
+.corpo .container{
+    width: 70%;
+    display: flex;
     align-items: center;
-    border: 1px solid black;
-    border-radius: 15px;
+    justify-content: space-around;
 }
-.content{
-    font-size: 20px;
+
+.corpo img{
+    border-radius: 590px 590px 590px 590px;
+    border:black solid 1px;
+    box-shadow: -5px 6px 4px 1px rgba(0,0,0,0.2);
 }
-.content p{
-    padding: 30px;
-    line-height: 29px;
-    text-align: justify;
+.corpo .texto{
+    background-color: #03497a;
+    height: 65%;
+    width: 50%;
+    border-radius: 20px;
+    border: black 1.5px solid;
+}
+.corpo .texto p{
+  color: #fafafa;
+  font-size: 20px;
+  padding: 10px;
+  text-align: justify;
+}
+.corpo .texto h2{
+    text-align: center;
+    color: #fafafa;
 }
 .footer{
     width: 100%;

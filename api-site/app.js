@@ -10,7 +10,7 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var postagemRouter = require(".src/routes/postagem")
+var postagemRouter = require("./src/routes/postagem")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

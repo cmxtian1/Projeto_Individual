@@ -21,7 +21,7 @@ function entrar() {
 
                 sessionStorage.LOGIN_USUARIO = json.login;
                 sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.ID_USUARIO = json.idAtleta;
 
                 setTimeout(function () {
                     window.location = "/index.html";
@@ -47,7 +47,6 @@ function entrar() {
 }
 
 function validarSessao() {
-    aguardar();
 
     var login = sessionStorage.LOGIN_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -58,7 +57,6 @@ function validarSessao() {
         // window.alert(`Seja bem-vindo, ${nome}!`);
         h1Titulo.innerHTML = `${login}`;
 
-        finalizarAguardar();
     } else {
         window.location = "index.html";
     }

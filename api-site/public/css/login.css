@@ -95,6 +95,7 @@ a{
     height: 22%;
     width: 54%;
     border-radius: 15px;
+    outline: none;
     font-size: 18px;
     border: #eda43d solid 2px;
 }

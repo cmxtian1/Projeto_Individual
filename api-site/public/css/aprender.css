@@ -66,6 +66,11 @@ a{
     padding: 7px;
     border-radius: 17px;
 }
+.container h2:hover{
+    background-color: #ad131f;
+    transition: all 0.4s ease;
+   
+}
 .conteúdo{
     width: 80%;
 }
@@ -88,11 +93,3 @@ a{
     box-shadow: -5px 6px 4px 1px rgba(0,0,0,0.2);
 }
 
-/*
-#gif2{
-    height: 490px;
-    width: 38%;
-    background-image: url('https://i.pinimg.com/originals/09/53/9e/09539ec151a3ce45895a2dbc1ac1dfb1.gif');
-    background-repeat: no-repeat;
-}
-*/

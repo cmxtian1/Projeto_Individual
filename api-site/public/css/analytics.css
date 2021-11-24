@@ -49,11 +49,9 @@ a{
     width: 70%;
     height: 80%;
     background-color: rgba(0,0,0,0.2);
+    border: 1px solid black;
+    box-shadow: 2px 2px;
 }
 .cadastro .container h1{
-    text-align: center;
-    
-}
-.cadastro .container h2{
-    text-align: center;
+    text-align: center;   
 }

@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
-<body>
+<body onload="atualizarFeed()">
         <!-- HEADER -->
         <div class='header'>
             <div class='container'>
@@ -20,7 +20,7 @@
                     <h1>LookMuay</h1>
                     <ul class='navbar'>
                         <li>
-                            <a href="academia.html">Academia</a>
+                            <a href="graduacao.html">Graduação</a>
                         </li>
                         |
                         <li>
@@ -61,27 +61,6 @@
         </div>
 </body>
 </html>
-<!--<script>
-    function post(){
-        var texto = publi.value;
-        
-        feed.innerHTML += `
-        <div class='newpost'>
-        <b>Cristhian Mendes da Silva</b>
-         <br>
-         
-            ${texto}
-            <br>
-            <button id='div_btn' onclick='aumentar()'>
-                👍 Curtir (<span id='contar'>0</span>)
-            </button>
-        </div>
-        `
-    }
-    function aumentar(){
-       contar.innerHTML = 1; 
-    }
-</script>-->
 
 <script>
 
@@ -104,7 +83,6 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
                 window.location = "feed.html";
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
@@ -127,7 +105,7 @@
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    mensagem.innerHTML = "<br><h3>Nenhum post foi realizado ainda!</h3>"
                     feed.appendChild(mensagem);
                     throw "Nenhum resultado encontrado!!";
                 }
@@ -143,20 +121,25 @@
                         // criando e manipulando elementos do HTML via JavaScript
                         var divPublicacao = document.createElement("div");
                         var spanNome = document.createElement("span");
-                        var divDescricao = document.createElement("div");       
+                        var divDescricao = document.createElement("div");
+                        var botaolike = document.createElement("button");       
 
 
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nomeAtleta + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
+                        spanNome.innerHTML = "<b>" + publicacao.nomeAtleta + "</b>" + " - " + publicacao.graduacao + '<br><br>';
+                        divDescricao.innerHTML =  publicacao.descricao ;
+                        botaolike.innerHTML = 'Curtir';
                         
 
                         divPublicacao.className = "publicacao";
                         spanNome.className = "publicacao-nome";
                         divDescricao.className = "publicacao-descricao";
+                        botaolike.className = 'btn_feed';
+                        
 
 
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(divDescricao);
+                        divPublicacao.appendChild(botaolike);
                         feed.appendChild(divPublicacao);
                     }
 

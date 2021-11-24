@@ -1,8 +1,8 @@
 var postagemModel = require("../models/postagemModel");
 
 function testar(req, res) {
-    console.log("ENTRAMOS NO avisoController");
-    res.send("ENTRAMOS NO AVISO CONTROLLER");
+    console.log("ENTRAMOS NO postagemController");
+    res.send("ENTRAMOS NO POSTAGEM CONTROLLER");
 }
 
 function listar(req, res) {

@@ -72,17 +72,62 @@ a{
     align-items: center;
     justify-content: center;
 }
-.publicacao{
-    margin-top: 30px;
-    width: 40%;
-    background-color: #fafafab2;
-    border: 1px solid black ;
-    padding: 5px;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-}
+
+
 #div_btn{
     align-self: flex-end;
     justify-self: flex-end;
 }
+#feed_container{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 43%;
+}
+
+.publicacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    border: 1px solid black;
+    padding: 20px;
+    background-color: #fafafab2;
+    margin-top: 30px;
+    font-size: 18px;
+  }
+  
+  .publicacao > *:not(:last-child) {
+    padding: 0 0 10px 0;
+  }
+  
+  .div-results {
+    width: 100%;
+  }
+  
+  .div-results .feed-container {
+    background-color: #212124;
+    border-radius: 5px;
+    margin-bottom: 80px;
+  }
+
+  .btn_feed{
+      align-self: flex-end;
+      width: 9%;
+      border: none;
+      background-color: #03497a;
+      color: #fafafa;
+      font-weight: 600;
+      height: 21px;
+      border-radius: 5px;
+  }
+
+  .msg_class{
+      text-align: center;
+  }
+
+  #feed_container h3{
+      text-align: center;
+  }
+  

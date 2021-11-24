@@ -9,7 +9,7 @@ function listar() {
             graduacao,
             descricao
         FROM feed 
-            INNER JOIN atltea
+            INNER JOIN atleta
                 ON fkatleta = idatleta;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);

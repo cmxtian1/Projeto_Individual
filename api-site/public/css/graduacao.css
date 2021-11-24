@@ -1,0 +1,198 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e3e5e2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #fafafa;
+}
+.header{
+    height: 100px;
+    background-color: #ad131f;
+    display: flex;
+    justify-content: center;
+    border-bottom: #eda43d 3px solid;
+}
+.header .container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header h1{
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+    color: #fafafa;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+}
+.navbar{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 600px;
+    list-style: none;
+    font-weight: 600;
+}
+.cadastro{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    height: 89vh;;
+}
+.cadastro  .container{
+    width: 70%;
+    height: 80%;
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid black;
+    box-shadow: 2px 2px;
+}
+.cadastro .container h1{
+    text-align: center;
+    
+}
+.cadastro .container .title{
+    display: flex;
+    justify-content: space-around;
+}
+.cadastro .container .prajied{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    float: left;
+}
+.prajied div{
+    height: 20px;
+    width: 40%;
+    margin-top: 20px;
+}
+#branco{
+    background-color: #fafafa;
+}
+#branco_vermelho{
+    display: flex;
+}
+#branco_vermelho1{
+    background-color: #fafafa;
+    width: 50%;
+    margin-top: 0;
+}
+#branco_vermelho2{
+    background-color: red;
+    width: 50%;
+    margin-top: 0;
+}
+#vermelho{
+    background-color: red;
+}
+#vermelho_azulclaro{
+    display: flex;
+}
+#vermelho_azulclaro1{
+    background-color: #fafafa;
+    width: 50%;
+    margin-top: 0;
+}
+#vermelho_azulclaro2{
+    background-color:dodgerblue;
+    width: 50%;
+    margin-top: 0;
+}
+#azul{
+    background-color: dodgerblue;
+}
+#azuleazul{
+    display: flex;
+}
+#azuleazul1{
+    background-color:dodgerblue;
+    width: 50%;
+    margin-top: 0;
+}
+#azuleazul2{
+    background-color: darkblue;
+    width: 50%;
+    margin-top: 0;
+}
+#azulescuro{
+    background-color: darkblue;
+}
+#azulescuropreto{
+    display: flex;
+}
+#azulescuropreto1{
+    background-color: darkblue;
+    width: 50%;
+    margin-top: 0;
+}
+#azulescuropreto2{
+    background-color: black;
+    width: 50%;
+    margin-top: 0;
+}
+#preto{
+    background-color: black;
+}
+#pretobranco{
+    display: flex;
+}
+#pretobranco1{
+    background-color: black;
+    width: 50%;
+    margin-top: 0;
+}
+#pretobranco2{
+    background-color: #fafafa;
+    width: 50%;
+    margin-top: 0;
+}
+#pretobrancovermelho{
+    display: flex;
+}
+#pretobrancovermelho1{
+    background-color: black;
+    margin-top: 0;
+    width: 33%;
+}
+#pretobrancovermelho2{
+    background-color: white;
+    margin-top: 0;
+    width: 33%;
+}
+#pretobrancovermelho3{
+    background-color:red;
+    margin-top: 0;
+    width: 33%;
+}
+
+.niveis .box h3{
+    text-align: center;
+}
+.cadastro .container .btn{
+display: flex;
+justify-content: center;
+}
+.btn button{
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid #03497a;
+    background-color: #03497a;
+    color: #fafafa;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.8s ease;
+}
+
+.btn button:hover{
+    height: 50px;
+    width: 19%;
+    font-size: 19px;
+    transition: all 1.2s ease;
+}

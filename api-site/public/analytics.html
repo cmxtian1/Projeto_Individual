@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,9 @@
     <title>Cadastro de academia</title>
     <link rel="stylesheet" href="./css/analytics.css">
     <link rel="icon" href="./img/logo_pi.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body onload="validarSessao()">
     <!--HEADER-->
     <div class='header'>
@@ -41,25 +44,74 @@
     <div class='cadastro'>
         <div class='container'>
             <h1>Usuários e suas graduações</h1>
+            <div class="graph">
+                <canvas id="lineChart" style="height: 80%; width:100%;"></canvas>
+            </div>
         </div>
     </div>
 
 </body>
+
 </html>
 <script>
     function limparSessao() {
-    sessionStorage.clear();
-    window.location = "../index.html";
-}
-
-function validarSessao() {
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-    if (email == null && nome == null) {
-        
+        sessionStorage.clear();
         window.location = "../index.html";
     }
-}
+
+    function validarSessao() {
+
+        var email = sessionStorage.EMAIL_USUARIO;
+        var nome = sessionStorage.NOME_USUARIO;
+
+        if (email == null && nome == null) {
+
+            window.location = "../index.html";
+        }
+    }
+
+    fetch("/graficos/analytics").then(function (resposta) {
+
+        resposta.json().then(function (json) {
+
+            const config = {
+                type: "pie",
+                data: {
+                    labels: ["Branco", "Branco e vermelho", "Vermelho", "Vermelho e Azul claro", "Azul claro", "Azul claro e azul escuro", "Azul escuro", "Azul escuro e preto", "Preto", "Preto e branco", "Preto, branco e vermelho", "Sem graduação"],
+                    datasets: [
+                        {
+                            label: "Graduação X Usuário",
+                            data: [json[0].contagem, json[1].contagem, json[2].contagem, json[3].contagem, json[4].contagem, json[5].contagem, json[6].contagem, json[7].contagem, json[8].contagem, json[9].contagem, json[10].contagem, json[11].contagem],
+                            backgroundColor: ['#55cbcd', '#97c1a9', '#ffc8a2', '#cbaacb', '#ffffb5', '#f3b0c3', '#ff968a', '#afdefa', '#d7b5d3', '#9ea1ca', '#eed29f', '#e7ffac'],
+                            borderColor: "#000"
+                        }
+                    ]
+                },
+
+                options: {
+                    maintainAspectRatio: false
+                }
+            }
+
+            var mychartLine = new Chart(document.getElementById("lineChart"), config);
+
+
+
+
+        })
+        console.log(resposta);
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+
+
+
+    /*label: "Graduação X Usuário",
+                            data: [json[0].contagem, json[1].contagem, json[2].contagem, json[3].contagem, json[4].contagem, json[5].contagem, json[6].contagem, json[7].contagem, json[8].contagem, json[9].contagem, json[10].contagem, json[11].contagem],
+                            backgroundColor: ['#55cbcd', '#97c1a9', '#ffc8a2', '#cbaacb', '#ffffb5', '#f3b0c3', '#ff968a', '#afdefa', '#d7b5d3', '#9ea1ca', '#eed29f', '#e7ffac'],
+                            borderColor: "#000"*/
+
+
+
 </script>

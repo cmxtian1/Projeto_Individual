@@ -1,5 +1,4 @@
 process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-// process.env.AMBIENTE_PROCESSO = "producao";
 
 var express = require("express");
 var cors = require("cors");
@@ -12,6 +11,8 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var postagemRouter = require("./src/routes/postagem");
 var graficoRouter = require("./src/routes/grafico");
+var curtidasRouter = require("./src/routes/curtidas");
+
 
 
 app.use(express.json());
@@ -24,6 +25,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/postagem", postagemRouter);
 app.use("/graficos", graficoRouter);
+app.use("/curtidas", curtidasRouter);
 
 
 

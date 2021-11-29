@@ -41,6 +41,7 @@
         </div>
 
         <!-- FEED -->
+        <div id='nomedousuario'><span id='sessaoatual'></span></div>
             <div class='postagem'>
                 <form id='form_postagem' method="post" onsubmit="return publicar()">
 
@@ -98,6 +99,7 @@
 
 
     function atualizarFeed() {
+    
         fetch("/postagem/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -120,12 +122,13 @@
                         var divPublicacao = document.createElement("div");
                         var spanNome = document.createElement("span");
                         var divDescricao = document.createElement("div");
-                        var botaolike = document.createElement("button");       
+                        var botaolike = document.createElement("button");
 
 
                         spanNome.innerHTML = "<b>" + publicacao.nomeAtleta + "</b>" + " - " + publicacao.graduacao + '<br><br>';
                         divDescricao.innerHTML =  publicacao.descricao ;
-                        botaolike.innerHTML = 'Curtir';
+                        botaolike.innerHTML = 'curtir 0' ;
+                        
                         
 
                         divPublicacao.className = "publicacao";
@@ -133,7 +136,7 @@
                         divDescricao.className = "publicacao-descricao";
                         botaolike.className = 'btn_feed';
                         
-
+                        
 
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(divDescricao);
@@ -161,12 +164,12 @@ function validarSessao() {
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
-
+    
     if (email == null && nome == null) {
         
         window.location = "../index.html";
     }
 }
 
-
+sessaoatual.innerHTML = sessionStorage.NOME_USUARIO;
 </script>

@@ -40,6 +40,20 @@ a{
     -webkit-text-stroke-width: 0.2px;
     -webkit-text-stroke-color: black;
 }
+#nomedousuario{
+    margin-top: 20px;
+    font-size: 25px;
+    text-align: center;
+}
+#sessaoatual{
+    background-color: #03497a;
+    color: #fafafa;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 1.5px 1.5px black;
+}
 .postagem{
     display: flex;
     justify-content: center;
@@ -121,6 +135,8 @@ a{
       font-weight: 600;
       height: 21px;
       border-radius: 5px;
+      text-align: center;
+      font-size: 14px;
   }
 
   .msg_class{

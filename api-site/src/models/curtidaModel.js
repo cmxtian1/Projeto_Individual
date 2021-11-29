@@ -1,0 +1,31 @@
+var database = require("../database/config")
+
+var contador = 0
+
+console.log(contador);
+
+function curtirPost(idFeed) {
+
+    contador++;
+
+    var instrucao = `
+        insert into curtidas values ('${idFeed}', '${idAtleta}', '1'); 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
+function listarCurtidas() {
+
+    var instrucao = `
+        select * from curtidas group by fkfeed;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+module.exports = {
+    curtirPost,
+    listarCurtidas
+}

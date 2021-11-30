@@ -3,7 +3,7 @@ var router = express.Router();
 
 var curtidaController = require("../controllers/curtidaController")
 
-router.post("/curtirPost", function (req, res) {
+router.post("/curtirPost/:idAtleta", function (req, res) {
     curtidaController.curtirPost(req, res)
 });
 

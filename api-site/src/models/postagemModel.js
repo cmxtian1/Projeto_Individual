@@ -5,6 +5,7 @@ function listar() {
     var instrucao = `
         SELECT 
             idAtleta,
+            idfeed,
             nomeAtleta,
             graduacao,
             descricao

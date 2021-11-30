@@ -105,11 +105,13 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,0.2);
     padding: 20px;
     background-color: #fafafab2;
     margin-top: 30px;
     font-size: 18px;
+    box-shadow: rgba(0,0,0,0.2) -1px 1px;
+    border-radius:10px ;
   }
   
   .publicacao > *:not(:last-child) {

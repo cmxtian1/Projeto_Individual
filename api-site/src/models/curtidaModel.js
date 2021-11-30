@@ -4,7 +4,7 @@ var contador = 0
 
 console.log(contador);
 
-function curtirPost(idFeed) {
+function curtirPost(idFeed, idAtleta) {
 
     contador++;
 

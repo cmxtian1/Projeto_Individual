@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,56 +13,60 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
+
 <body onload="validarSessao(), atualizarFeed()">
-        <!-- HEADER -->
-        <div class='header'>
-            <div class='container'>
-                <a href="feed.html">
-                    <h1>LookMuay</h1>
-                </a>
-                    <ul class='navbar'>
-                        <li>
-                            <a href="graduacao.html">Graduação</a>
-                        </li>
-                        |
-                        <li>
-                            <a href="feed.html">Feed</a>
-                        </li>
-                        |
-                        <li>
-                            <a href="aprender.html">Golpes</a>
-                        </li>
-                        |
-                        <li onclick="limparSessao()">
-                                Sair
-                                <img height="13px" src="./img/icon.png">
-                        </li>
-                    </ul>
-            </div>
+    <!-- HEADER -->
+    <div class='header'>
+        <div class='container'>
+            <a href="feed.html">
+                <h1>LookMuay</h1>
+            </a>
+            <ul class='navbar'>
+                <li>
+                    <a href="graduacao.html">Graduação</a>
+                </li>
+                |
+                <li>
+                    <a href="feed.html">Feed</a>
+                </li>
+                |
+                <li>
+                    <a href="aprender.html">Golpes</a>
+                </li>
+                |
+                <li onclick="limparSessao()">
+                    Sair
+                    <img height="13px" src="./img/icon.png">
+                </li>
+            </ul>
         </div>
+    </div>
 
-        <!-- FEED -->
-        <div id='nomedousuario'><span id='sessaoatual'></span></div>
-            <div class='postagem'>
-                <form id='form_postagem' method="post" onsubmit="return publicar()">
+    <!-- FEED -->
+    <div id='nomedousuario'><span id='sessaoatual'></span></div>
+    <div class='postagem'>
+        <form id='form_postagem' method="post" onsubmit="return publicar()">
 
-                    <textarea id="publi" name="descricao" placeholder=" Crie uma publicação" maxlength="300" rows="10"></textarea>
+            <textarea id="publi" name="descricao" placeholder=" Crie uma publicação" maxlength="300"
+                rows="10"></textarea>
 
-                    <button>
-                        Publicar
-                    </button>
-                </form>
-            </div>
-            <div id='feed'>
-                <div id="feed_container">
+            <button>
+                Publicar
+            </button>
+        </form>
+    </div>
+    <div id='feed'>
+        <div id="feed_container">
 
-                </div>
-            </div>
         </div>
+    </div>
+    </div>
 </body>
+
 </html>
 
 <script>
+    sessaoatual.innerHTML = sessionStorage.NOME_USUARIO;
 
 
     function publicar() {
@@ -97,9 +102,9 @@
     }
 
 
-
+    var idAtleta = sessionStorage.getItem("ID_USUARIO");
     function atualizarFeed() {
-    
+
         fetch("/postagem/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -125,18 +130,45 @@
                         var botaolike = document.createElement("button");
 
 
+
                         spanNome.innerHTML = "<b>" + publicacao.nomeAtleta + "</b>" + " - " + publicacao.graduacao + '<br><br>';
-                        divDescricao.innerHTML =  publicacao.descricao ;
-                        botaolike.innerHTML = 'curtir 0' ;
-                        
-                        
+                        divDescricao.innerHTML = publicacao.descricao;
+                        botaolike.innerHTML = 'curtir 0';
+
+
 
                         divPublicacao.className = "publicacao";
                         spanNome.className = "publicacao-nome";
                         divDescricao.className = "publicacao-descricao";
                         botaolike.className = 'btn_feed';
-                        
-                        
+                        botaolike.id = `btn_feed${i}`;
+
+                        var x = i + 1
+                        botaolike.onclick = function () {
+                            
+                            
+                            fetch(`/curtidas/curtirPost/${idAtleta}`, {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({
+                                    idPost: resposta[i].idfeed,
+                                    
+                                }),
+                            })
+                                .then(function (resposta) {
+                                    console.log("resposta: ", resposta);
+
+                                    carrega()
+                                })
+                                .catch(function (resposta) {
+
+                                });
+
+                        };
+
+
 
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(divDescricao);
@@ -144,32 +176,82 @@
                         feed.appendChild(divPublicacao);
                     }
 
-                    
+
                 });
             } else {
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
             console.error(resposta);
-            
+
         });
     }
 
+
+
+
+
     function limparSessao() {
-    sessionStorage.clear();
-    window.location = "../index.html";
-}
-
-function validarSessao() {
-
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    
-    if (email == null && nome == null) {
-        
+        sessionStorage.clear();
         window.location = "../index.html";
     }
-}
 
-sessaoatual.innerHTML = sessionStorage.NOME_USUARIO;
+    function validarSessao() {
+
+        var email = sessionStorage.EMAIL_USUARIO;
+        var nome = sessionStorage.NOME_USUARIO;
+
+        if (email == null && nome == null) {
+
+            window.location = "../index.html";
+        }
+    }
+
+
+    function carrega() {
+        fetch("/curtidas/listarCurtidas", {
+            method: "GET",
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                resposta
+                    .json()
+                    .then(function (json) {
+                        for (var i = 0; i < json.length; i++) {
+                            botaolike.innerHTML += `    <button class='btn_feed'
+                onclick="curtir(idPost)">curtir</button>
+                `;
+                            //${json[i].curtida}
+                            //${json[i].id}
+                        }
+
+                    })
+                    .catch(function (erro) {
+                        console.log(erro);
+                    });
+            })
+            .catch(function (resposta) { });
+    }
+/*
+    function curtirPost(idPost) {
+        console.log(idPost);
+
+        fetch("/curtidas/curtirPost", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idPost: idPost,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                carrega()
+            })
+            .catch(function (resposta) { });
+    }
+*/
 </script>

@@ -2,13 +2,14 @@
 var curtidaModel = require("../models/curtidaModel");
 
 function curtirPost(req, res) {
-    var idFeed = req.body.idFeed;
+    var idFeed = req.body.idPost;
+    var idAtleta = req.params.idAtleta;
 
     if (idFeed == undefined) {
         res.status(400).send('Erro');
     }
 
-    curtidaModel.curtirPost(idFeed).then(function (res){
+    curtidaModel.curtirPost(idFeed,idAtleta).then(function (res){
         res.status(200).send('Tudo certo');
     }).catch(function(erro) {
         console.log(erro);

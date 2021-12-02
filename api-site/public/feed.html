@@ -157,11 +157,9 @@
                                     }),
                                 })
                                     .then(function (resposta) {
-                                        console.log("RESPOSTAAAAA:::::::", resposta);
+                                        console.log("RESPOSTA:", resposta);
                                         if (resposta.ok) {
-                                            // resposta.json().then(function (respostaFormatada) {
-                                            //     console.log(respostaFormatada);
-                                            // })
+
                                             listarCurtidas(i);
                                         }
                                     })
@@ -215,7 +213,7 @@
             method: "GET",
         })
             .then(function (resposta) {
-                console.log("CURTIDASSSSS:::::: ", resposta);
+                console.log("CURTIDAS: ", resposta);
 
                 resposta
                     .json()

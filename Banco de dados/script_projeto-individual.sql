@@ -55,12 +55,20 @@ curtiu int,
 primary key (fkfeed, fkatleta)
 );
 
-select * from feed;
 
+select * from feed;
+select * from atleta;
 select idAtleta, idfeed, nomeAtleta, graduacao, descricao from feed join atleta on fkatleta = idatleta;
 
 select graduacao, count(graduacao) from atleta group by graduacao;
 
 select fkfeed, count(curtiu) from curtidas group by fkfeed;
 
+-- select aparecer curtidas
+select fkfeed, feed.fkatleta, descricao,nomeAtleta,count(curtiu) as qtdcurtida from curtidas join feed on fkfeed=idfeed join atleta on feed.fkatleta=atleta.idatleta group by fkfeed;
+
 select * from curtidas;
+
+select curtiu from curtidas join feed on fkfeed = feed.idfeed where feed.idfeed= 24;
+
+update feed set fkatleta = 11 where idfeed = 24;

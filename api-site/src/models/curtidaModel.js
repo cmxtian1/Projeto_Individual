@@ -19,7 +19,10 @@ function curtirPost(idFeed, idAtleta) {
 function listarCurtidas() {
 
     var instrucao = `
-    select fkfeed, count(curtiu) from curtidas group by fkfeed;
+    select fkfeed, feed.fkatleta, descricao,nomeAtleta, count(curtiu) as qtdcurtida 
+    from curtidas join feed on fkfeed=idfeed 
+    join atleta on feed.fkatleta=atleta.idatleta 
+    group by fkfeed;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

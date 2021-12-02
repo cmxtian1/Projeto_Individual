@@ -143,33 +143,36 @@
                         botaolike.className = 'btn_feed';
                         botaolike.id = `btn_feed${i}`;
 
-                       
+
                         botaolike.onclick = function () {
-                            
-                            
-                            fetch(`/curtidas/curtirPost/${idAtleta}`, {
-                                method: "POST",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                    idPost: resposta[i].idfeed,
-                                    
-                                }),
-                            })
-                                .then(function (resposta) {
-                                    console.log("resposta: ", resposta);
+                            {
+                                fetch(`/curtidas/curtirPost/${idAtleta}`, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                        idPost: resposta[i].idfeed,
 
-                                    carrega()
+                                    }),
                                 })
-                                .catch(function (resposta) {
+                                    .then(function (resposta) {
+                                        console.log("RESPOSTAAAAA:::::::", resposta);
+                                        if (resposta.ok) {
+                                            // resposta.json().then(function (respostaFormatada) {
+                                            //     console.log(respostaFormatada);
+                                            // })
+                                            listarCurtidas(i);
+                                        }
+                                    })
+                                    .catch(function (resposta) {
 
-                                });
+                                    });
+                            }
+                        }
 
-                        };
 
-
-
+                        listarCurtidas(i);
                         divPublicacao.appendChild(spanNome);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(botaolike);
@@ -186,8 +189,7 @@
 
         });
     }
-
-
+    ;
 
 
 
@@ -208,21 +210,20 @@
     }
 
 
-    function listarCurtidas() {
+    function listarCurtidas(identificador) {
         fetch("/curtidas/listarCurtidas", {
             method: "GET",
         })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
+                console.log("CURTIDASSSSS:::::: ", resposta);
 
                 resposta
                     .json()
                     .then(function (json) {
-                        for (var i = 0; i < json.length; i++) {
-                 
-                            //${json[i].curtida}
-                            //${json[i].id}
-                        }
+                        console.log(json);
+
+                        var spanilda = document.getElementById(`curtida_post${identificador}`);
+                        spanilda.innerHTML = `${json[identificador].qtdcurtida}`;
 
                     })
                     .catch(function (erro) {

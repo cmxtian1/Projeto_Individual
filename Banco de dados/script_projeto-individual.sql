@@ -46,6 +46,21 @@ fkatleta int,
 foreign key (fkatleta) references atleta(idatleta)
 )auto_increment=3000;
 
+create table curtidas(
+fkfeed int,
+foreign key (fkfeed) references feed(idfeed),
+fkatleta int,
+foreign key (fkatleta) references atleta(idatleta),
+curtiu int,
+primary key (fkfeed, fkatleta)
+);
+
 select * from feed;
 
-select idAtleta, nomeAtleta, graduacao, descricao from feed join atleta on fkatleta = idatleta;
+select idAtleta, idfeed, nomeAtleta, graduacao, descricao from feed join atleta on fkatleta = idatleta;
+
+select graduacao, count(graduacao) from atleta group by graduacao;
+
+select fkfeed, count(curtiu) from curtidas group by fkfeed;
+
+select * from curtidas;

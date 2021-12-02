@@ -71,6 +71,16 @@ a{
     line-height: 29px;
     text-align: justify;
 }
+#comercial{
+    width: 80%;
+    height: 42%;
+    display: flex;
+    justify-content: center;
+}
+#comercial video{
+    height: 100%;
+    width: 80%;
+}
 .footer{
     width: 100%;
     height: 70px;

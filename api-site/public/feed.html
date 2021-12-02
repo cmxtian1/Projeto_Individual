@@ -133,7 +133,7 @@
 
                         spanNome.innerHTML = "<b>" + publicacao.nomeAtleta + "</b>" + " - " + publicacao.graduacao + '<br><br>';
                         divDescricao.innerHTML = publicacao.descricao;
-                        botaolike.innerHTML = 'curtir 0';
+                        botaolike.innerHTML = `curtir <span id='curtida_post${i}'>0</span>`;
 
 
 
@@ -143,7 +143,7 @@
                         botaolike.className = 'btn_feed';
                         botaolike.id = `btn_feed${i}`;
 
-                        var x = i + 1
+                       
                         botaolike.onclick = function () {
                             
                             
@@ -208,7 +208,7 @@
     }
 
 
-    function carrega() {
+    function listarCurtidas() {
         fetch("/curtidas/listarCurtidas", {
             method: "GET",
         })
@@ -219,9 +219,7 @@
                     .json()
                     .then(function (json) {
                         for (var i = 0; i < json.length; i++) {
-                            botaolike.innerHTML += `    <button class='btn_feed'
-                onclick="curtir(idPost)">curtir</button>
-                `;
+                 
                             //${json[i].curtida}
                             //${json[i].id}
                         }
@@ -233,25 +231,5 @@
             })
             .catch(function (resposta) { });
     }
-/*
-    function curtirPost(idPost) {
-        console.log(idPost);
 
-        fetch("/curtidas/curtirPost", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idPost: idPost,
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                carrega()
-            })
-            .catch(function (resposta) { });
-    }
-*/
 </script>
